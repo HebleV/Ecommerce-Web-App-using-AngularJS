@@ -1,0 +1,25 @@
+<div class="sidebar">
+    <!--Sidebar content-->
+    Search:
+    <input type="text" ng-model="$ctrl.query">
+    <p>
+        Sort by:
+        <select ng-model="$ctrl.orderProp">
+            <option value="name">Ratings</option>
+            <option value="price">Price</option>
+        </select>
+    </p>
+</div>
+<div class="mainContent">
+    <!--Body content-->
+    <ul class="products">
+        <li ng-repeat="tv in $ctrl.tvs | filter:$ctrl.query | orderBy:$ctrl.orderProp">
+            <a ng-href="{{tv.name}}">{{tv.name}}</a>
+            <IMG class="tvimages" ng-src="{{tv.img}}" height="150px" width="250px"></IMG>
+            <p>{{tv.Id}}</p>
+            <p><span class="description">Description:&nbsp;&nbsp;</span>{{tv.description}}</p>
+            <span class="price">Price:{{"&#x20b9;" + tv.price}}</span>
+            <button type="submit" class="button button--success" ng-click="addCart()">&nbsp;&nbsp;<i class="tiny material-icons">add_shopping_cart</i>Add to Cart</button>
+        </li>
+    </ul>
+</div>
